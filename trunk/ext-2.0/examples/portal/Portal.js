@@ -38,7 +38,7 @@ Ext.ux.Portal.DropZone = function(portal, cfg){
     portal.body.ddScrollConfig = this.ddScrollConfig;
 };
 
-Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {
+Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {	//Ext.dd.DropZone
     ddScrollConfig : {
         vthresh: 50,
         hthresh: -1,

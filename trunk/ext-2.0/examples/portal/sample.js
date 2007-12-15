@@ -58,7 +58,7 @@ Ext.onReady(function(){
             region:'center',
             margins:'35 5 5 0',
             items:[{
-                columnWidth:.33,
+                columnWidth:.25,
                 style:'padding:10px 0 10px 10px',
                 items:[{
                     title: 'Grid in a Portlet',
@@ -71,7 +71,7 @@ Ext.onReady(function(){
                     html: Ext.example.shortBogusMarkup
                 }]
             },{
-                columnWidth:.33,
+                columnWidth:.50,
                 style:'padding:10px 0 10px 10px',
                 items:[{
                     title: 'Panel 2',
@@ -83,7 +83,7 @@ Ext.onReady(function(){
                     html: Ext.example.shortBogusMarkup
                 }]
             },{
-                columnWidth:.33,
+                columnWidth:.25,
                 style:'padding:10px',
                 items:[{
                     title: 'Panel 3',

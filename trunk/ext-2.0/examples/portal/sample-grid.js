@@ -91,6 +91,7 @@ SampleGrid = function(limitColumns){
         }),
         columns: columns,
         autoExpandColumn: 'company',
+        //layout:'fit',
         height:250,
         width:600
     });
