@@ -123,7 +123,7 @@ Ext.onReady(function(){
 		items:[
 		{
 			id:'pTab1',
-	   		title: '待修項目',
+	   		title: 'pending',
    			closable:false,	//required
    			autoScroll:true,
    			html:'head<br><br><br><br>tail'
@@ -134,7 +134,7 @@ Ext.onReady(function(){
 	            	}]*/
 		},{
 			id:'pTab2',
-	   		title: '課程',
+	   		title: 'course',
    			closable:false,	//required
    			autoScroll:true,
 			html:'head2<br><br><br><br>tail2'
@@ -216,7 +216,7 @@ Ext.onReady(function(){
                     //autoScroll:true,
 	                items: managerGrid
                 },{
-                    title: '課程搜尋',
+                    title: 'Course Search',
                     //layout: 'fit', not required for tabPortlet
                     tools: tools,
 	                items: [
