@@ -11,8 +11,8 @@ Ext.ux.Portlet = Ext.extend(Ext.Panel, {
     frame:true,
     collapsible:true,
     draggable:true,
-    cls:'x-portlet'//,
-//    autoWidth:true,
-//    width:'auto'
+    cls:'x-portlet'
+    //, autoWidth: true,
+    //width: 'auto'
 });
 Ext.reg('portlet', Ext.ux.Portlet);

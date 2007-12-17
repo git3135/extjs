@@ -25,7 +25,8 @@ Ext.onReady(function(){
 
     var viewport = new Ext.Viewport({
         layout:'border',
-        items:[{
+        items:[
+/*       	{
             region:'west',
             id:'west-panel',
             title:'West',
@@ -53,7 +54,8 @@ Ext.onReady(function(){
                 autoScroll:true,
                 iconCls:'settings'
             }]
-        },{
+        },
+*/        {
             xtype:'portal',
             region:'center',
             margins:'35 5 5 0',

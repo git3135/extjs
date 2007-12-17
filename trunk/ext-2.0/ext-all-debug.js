@@ -1720,6 +1720,7 @@ Ext.EventManager = function(){
 
         
         onWindowResize : function(fn, scope, options){
+        	alert('EventManager onWindowResize: '+scope);
             if(!resizeEvent){
                 resizeEvent = new Ext.util.Event();
                 resizeTask = new Ext.util.DelayedTask(function(){
