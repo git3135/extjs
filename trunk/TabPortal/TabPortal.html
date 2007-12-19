@@ -1,46 +1,51 @@
 <html>
 <head>
-    <title>TabPortal test</title>
+<title>TabPortal test</title>
 
-    <!-- Ext CSS and Libs -->
-    <link rel="stylesheet" type="text/css" href="../ext-2.0/resources/css/ext-all.css"/>
+<!-- Ext CSS and Libs -->
+<link rel="stylesheet" type="text/css"	href="../ext-2.0/resources/css/ext-all.css" />
 
-    <script type="text/javascript" src="../ext-2.0/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="../ext-2.0/ext-all-debug.js"></script>
+<script type="text/javascript"	src="../ext-2.0/adapter/ext/ext-base.js">
+</script>
+<script type="text/javascript" src="../ext-2.0/ext-all-debug.js">
+</script>
+ 
+<!-- Custom CSS and Libs -->
+<script type="text/javascript" src="./TabPortal.js">
+</script>
+<script type="text/javascript" src="../ext-2.0/examples/portal/Portal.js">
+</script>
+<script type="text/javascript" src="../ext-2.0/examples/portal/PortalColumn.js">
+</script>
+<script type="text/javascript" src="../ext-2.0/examples/portal/Portlet.js">
+</script>
+<script type="text/javascript" src="../ext-2.0/examples/portal/sample-grid.js">
+</script>
 
-    <!-- Example CSS and Libs -->
-    <link rel="stylesheet" type="text/css" href="../ext-2.0/examples/portal/portal.css"/>
-    <link rel="stylesheet" type="text/css" href="../ext-2.0/examples/portal/sample.css"/>
+<link rel="stylesheet" type="text/css" href="../ext-2.0/examples/portal/portal.css" />
+<link rel="stylesheet" type="text/css" href="../ext-2.0/examples/portal/sample.css" />
 
-    <script type="text/javascript" src="../ext-2.0/examples/portal/Portal.js"></script>
-    <script type="text/javascript" src="../ext-2.0/examples/portal/PortalColumn.js"></script>
-    <script type="text/javascript" src="../ext-2.0/examples/portal/Portlet.js"></script>
-    <script type="text/javascript" src="../ext-2.0/examples/portal/sample-grid.js"></script>
+<style>
+#actions li {
+	margin:.3em;
+}
 
-    <!-- Sources -->
-    <script type="text/javascript" src="./TabPortal.js"></script>
-
-    <style>
-        #actions li {
-            margin: .3em;
-        }
-        
-        #actions li a {
-            color: #666688;
-            text-decoration: none;
-        }
-    </style>
+#actions li a {
+	color:#666688;
+	text-decoration:none;
+}
+</style>
 </head>
 <body>
-    <ul id="actions" class="x-hidden">
-        <li>
-            <a id="use" href="#">Use Existing Tab</a>
-        </li>
-        <li>
-            <a id="create" href="#">Create New Tab</a>
-        </li>
-    </ul>
-    <div id="tabs">
-    </div>
+<ul id="actions" class="x-hidden">
+	<li>
+		<a id="use" href="#">Use Existing Tab</a>
+	</li>
+	<li>
+		<a id="create" href="#">Create New Tab</a>
+	</li>
+</ul>
+<div id="tabs">
+</div>
 </body>
 </html>

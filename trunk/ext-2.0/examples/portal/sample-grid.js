@@ -92,11 +92,30 @@ SampleGrid = function(limitColumns){
         columns: columns,
         autoExpandColumn: 'company',
         //layout:'fit',
-        height:250,
-        width:600
+        title:'SampleGrid',
+        height:250//,
+        //width:600
     });
-
 
 }
 
-Ext.extend(SampleGrid, Ext.grid.GridPanel);
+Ext.extend(SampleGrid, Ext.grid.GridPanel
+/*, {
+	doLayout : function() {
+		//alert('sample grid doLayout()');
+		var gridview = this.getView();
+		//gridview.layout();
+
+		if(false){	//this.viewReady
+			alert('this.viewReady');
+			//alert('this.grid: '+this.superclass.grid);
+			//this.afterRender();
+//			resizeTask1 = new Ext.util.DelayedTask(this.afterRender);
+//            resizeTask1.delay(1000);
+			resizeTask2 = new Ext.util.DelayedTask(gridview.layout, this);
+            resizeTask2.delay(1000);
+        }
+	}
+}
+*/
+);

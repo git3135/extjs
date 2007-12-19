@@ -6,7 +6,7 @@
             Ext.Msg.alert('Message', 'Portlet Settings was clicked.');
         }
     }];
-
+    
     var tab_tools = [{
         id:'gear',
         handler: function(){
@@ -113,17 +113,15 @@ Ext.onReady(function(){
 	var managerGrid = new SampleGrid([0, 1, 2, 3]);	//
 
 	var tabPortlet = new Ext.TabPanel({
-		//anchor:'100%',
 		region: 'center',
 		activeTab:0,  //from 0,1,..
        	defaults:{autoScroll:true},
        	width:'auto',
-       	//autoWidth: true,
 	    height:'auto',
 		items:[
 		{
 			id:'pTab1',
-	   		title: 'pending',
+	   		title: 'Pending',
    			closable:false,	//required
    			autoScroll:true,
    			html:'head<br><br><br><br>tail'
@@ -134,7 +132,7 @@ Ext.onReady(function(){
 	            	}]*/
 		},{
 			id:'pTab2',
-	   		title: 'course',
+	   		title: 'Course',
    			closable:false,	//required
    			autoScroll:true,
 			html:'head2<br><br><br><br>tail2'
@@ -142,30 +140,28 @@ Ext.onReady(function(){
 	}); 
 	
     var learner_portal = new Ext.Panel({
-		title: 'Dashboard1',
+	title: 'Dashboard1',
         tools: tab1_tools,
-		layout:'fit',	//required
+	layout:'fit',	//required
         items:[
         {
 			xtype:'portal',	//required for apply correct column layout
             items:[
            	{
-                columnWidth:.33,
+                columnWidth:.30,
                 style:'padding:10px 0 10px 10px',
                 //widgets
                 items:[{
                     title: 'Another Panel 1',
-                    layout: 'fit',
                     tools: tools,
                     html: "here"
                 },{
                     title: 'Another Panel 2',
-                    layout: 'fit',
                     tools: tools,
                     html: "here2"
                 }]
             },{
-                columnWidth:.33,
+                columnWidth:.40,
                 style:'padding:10px 0 10px 10px',
                 //widgets
                 items:[{
@@ -175,16 +171,16 @@ Ext.onReady(function(){
 	                items: learnerGrid
                 }]
 			},{
-                columnWidth:.33,
+                columnWidth:.30,
                 style:'padding:10px 0 10px 10px'
             }]
         }]
     });
     
     var manager_portal = new Ext.Panel({
-        title: 'Dashboard2',
-        tools: tab2_tools,
-        layout: 'fit',	//required
+    	title: 'Dashboard2',
+	tools: tab2_tools,
+	layout: 'fit',	//required
         items:[
         {
             xtype:'portal',	//required for apply correct column layout
@@ -195,12 +191,10 @@ Ext.onReady(function(){
                 //widgets
                 items:[{
                     title: 'myLinks',
-                    layout: 'fit',
                     tools: myLinks_tools,
                     html: "Link1<br>Link2<br>CyberLink"
                 },{
                     title: 'Another Panel 1',
-                    layout: 'fit',
                     tools: tools,
                     html: "here"
                 }]
@@ -211,9 +205,7 @@ Ext.onReady(function(){
                 items:[{
                     title: 'Grid in a Portlet',
                 	layout: 'fit',	//required for grid
-                	width: 'auto',
                     tools: tools,
-                    //autoScroll:true,
 	                items: managerGrid
                 },{
                     title: 'Course Search',

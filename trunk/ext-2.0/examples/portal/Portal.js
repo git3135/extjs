@@ -38,7 +38,7 @@ Ext.ux.Portal.DropZone = function(portal, cfg){
     portal.body.ddScrollConfig = this.ddScrollConfig;
 };
 
-Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {	//Ext.dd.DropZone
+Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropZone, {	//Ext.dd.DropTarget
     ddScrollConfig : {
         vthresh: 50,
         hthresh: -1,
@@ -160,7 +160,7 @@ Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {	//Ext.dd.DropZone
             c.doLayout();
 
             this.portal.fireEvent('drop', dropEvent);
-
+            
             // scroll position is lost on drop, fix it
             var st = this.scrollPos.top;
             if(st){
@@ -169,8 +169,8 @@ Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {	//Ext.dd.DropZone
                     d.scrollTop = st;
                 }, 10);
             }
-
-        }
+            
+		}
         delete this.lastPos;
     },
 

@@ -23,7 +23,15 @@ Ext.onReady(function(){
         }
     }];
 
+    var sampleGrid = new SampleGrid([0, 2, 3]);
+/*    
+    sampleGrid.on('afterDragDrop', function () {
+    	alert('sampleGrid on afterDragDrop');
+    	//this.onResize();
+    });
+*/
     var viewport = new Ext.Viewport({
+    	title:'viewport',
         layout:'border',
         items:[
 /*       	{
@@ -57,22 +65,28 @@ Ext.onReady(function(){
         },
 */        {
             xtype:'portal',
+            id:'portal',
+            title: 'portal',
             region:'center',
             margins:'35 5 5 0',
             items:[{
+            	title: 'column1',
                 columnWidth:.25,
                 style:'padding:10px 0 10px 10px',
                 items:[{
+                	id: 'sampleGrid',
                     title: 'Grid in a Portlet',
                     layout:'fit',
+                    //anchor: '100%',
                     tools: tools,
-                    items: new SampleGrid([0, 2, 3])
+                    items: sampleGrid
                 },{
                     title: 'Another Panel 1',
                     tools: tools,
                     html: Ext.example.shortBogusMarkup
                 }]
             },{
+            	title: 'column2',
                 columnWidth:.50,
                 style:'padding:10px 0 10px 10px',
                 items:[{
@@ -85,6 +99,7 @@ Ext.onReady(function(){
                     html: Ext.example.shortBogusMarkup
                 }]
             },{
+            	title: 'column3',
                 columnWidth:.25,
                 style:'padding:10px',
                 items:[{
@@ -99,5 +114,7 @@ Ext.onReady(function(){
             }]
         }]
     });
+
+    
 });
 
