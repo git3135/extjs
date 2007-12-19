@@ -90,10 +90,13 @@ SampleGrid = function(limitColumns){
             ]
         }),
         columns: columns,
+        viewConfig: {
+        	forceFit: false
+        },
         autoExpandColumn: 'company',
         //layout:'fit',
-        title:'SampleGrid',
-        height:250//,
+        title: 'SampleGrid',
+        height: 250//,
         //width:600
     });
 

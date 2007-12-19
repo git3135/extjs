@@ -16127,7 +16127,7 @@ Ext.Panel = Ext.extend(Ext.Container, {
     },
 
 	onResize : function(w, h){
-		alert(this.title+', onResize('+w+', '+h+')');
+		//alert(this.title+', onResize('+w+', '+h+')');
 		
         if(w !== undefined || h !== undefined){
             if(!this.collapsed && this.body!=null){
@@ -20890,6 +20890,7 @@ Ext.MessageBox = function(){
 
         
         alert : function(title, msg, fn, scope){
+        	
             this.show({
                 title : title,
                 msg : msg,
@@ -20897,6 +20898,7 @@ Ext.MessageBox = function(){
                 fn: fn,
                 scope : scope
             });
+            
             return this;
         },
 
@@ -28696,25 +28698,23 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     
     afterRender : function(){
-    	//alert('GP, afterRender()');
+
         Ext.grid.GridPanel.superclass.afterRender.call(this);
         this.view.layout();
         this.viewReady = true;
         
         if(this.monitorWindowResize === true){
-        	//alert('this.monitorWindowResize === true');
             Ext.EventManager.onWindowResize(this.onWindowResize, this, true);
         }
     },
 
     onWindowResize : function(){
-    	alert('GP, onWindowResize()');
-    	this.onResize();
 
-//    	alert('GP, onWindowResize(), this.viewReady:'+this.viewReady);
-//        if(this.viewReady){
-//            this.view.layout();
-//        }
+    	//this.onResize();
+        if(this.viewReady){
+        	//alert('GP, onWindowResize(), this.view.layout()');
+            this.view.layout();
+        }
 	},
     
     reconfigure : function(store, colModel){
@@ -28842,14 +28842,14 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     
     onResize : function(w, h){
-		alert('GP, onResize('+w+', '+h+')');
+		//alert('GP, onResize('+w+', '+h+')');
 		
     	Ext.grid.GridPanel.superclass.onResize.apply(this, arguments);
         if(this.viewReady){
-        	alert('GP, onResize, this.view.layout()');
+        	//alert('GP, onResize, this.view.layout()');
             this.view.layout();
         }
-        alert('GP, onResize end');
+        //alert('GP, onResize end');
     },
 
     
@@ -29224,15 +29224,17 @@ Ext.extend(Ext.grid.GridView, Ext.util.Observable, {
         this.onAllColumnWidthsUpdated(ws, tw);
     },
 
-        updateColumnWidth : function(col, width){
+	updateColumnWidth : function(col, width){
         var w = this.getColumnWidth(col);
         var tw = this.getTotalWidth();
+        //alert('GV, updateColumnWidth, (w,tw)=('+w+', '+tw+')');
 
         this.innerHd.firstChild.firstChild.style.width = tw;
         var hd = this.getHeaderCell(col);
         hd.style.width = w;
 
         var ns = this.getRows();
+        //alert('ns.length:'+ns.length);
         for(var i = 0, len = ns.length; i < len; i++){
             ns[i].style.width = tw;
             ns[i].firstChild.style.width = tw;
@@ -29411,29 +29413,30 @@ Ext.extend(Ext.grid.GridView, Ext.util.Observable, {
         csize.width=g.getEl().getBox().width; 
         var vw = csize.width;
         
-        //alert('(vw, height) = ('+vw+', '+csize.height+')');
+        //alert('GV, check gridEl csize ('+vw+', '+csize.height+')');
         if(!vw && !csize.height){ // display: none?
         	return;
         }
 
-        //alert('g.autoHeight:'+g.autoHeight);
         if(g.autoHeight){
-            this.scroller.dom.style.overflow = 'visible';
+	        //alert('g.autoHeight:'+g.autoHeight);
+        	this.scroller.dom.style.overflow = 'visible';
         }else{
             this.el.setSize(csize.width, csize.height);
 
             var hdHeight = this.mainHd.getHeight();
             var vh = csize.height - (hdHeight);
 
-	        //alert('GV, layout('+vw+', '+vh+')');
-            
+	        alert('GV, this.scroller.setSize('+vw+', '+vh+')');
             this.scroller.setSize(vw, vh);
             if(this.innerHd){
-                this.innerHd.style.width = (vw)+'px';
+            	alert('GV, layout(), this.innerHd, width:'+vw);
+                this.innerHd.style.width = (vw-this.scrollOffset)+'px';
             }
         }
-        //alert('this.forceFit:'+this.forceFit);
+
         if(this.forceFit){
+        	//alert('this.forceFit, this.lastViewWidth:'+this.lastViewWidth+', vw:'+vw);
             if(this.lastViewWidth != vw){
                 this.fitColumns(false, false);
                 this.lastViewWidth = vw;
@@ -29636,7 +29639,7 @@ Ext.extend(Ext.grid.GridView, Ext.util.Observable, {
         return this.cm.getTotalWidth()+'px';
     },
 
-        fitColumns : function(preventRefresh, onlyExpand, omitColumn){
+	fitColumns : function(preventRefresh, onlyExpand, omitColumn){
         var cm = this.cm, leftOver, dist, i;
         var tw = cm.getTotalWidth(false);
         var aw = this.grid.getGridEl().getWidth(true)-this.scrollOffset;
@@ -29694,18 +29697,20 @@ Ext.extend(Ext.grid.GridView, Ext.util.Observable, {
 		//alert('autoExpand()');
         var g = this.grid, cm = this.cm;
         
+        //alert('this.userResized:'+this.userResized+'g.autoExpandColumn:'+g.autoExpandColumn);
         if(!this.userResized && g.autoExpandColumn){
             var tw = cm.getTotalWidth(false);
             var aw = this.grid.getGridEl().getWidth(true)-this.scrollOffset;
-            
+            //alert('tw:'+tw+', aw:'+aw);
             if(tw != aw){
                 var ci = cm.getIndexById(g.autoExpandColumn);
                 var currentWidth = cm.getColumnWidth(ci);
                 var cw = Math.min(Math.max(((aw-tw)+currentWidth), g.autoExpandMin), g.autoExpandMax);
-                
+                //alert('cw:'+cw+', currentWidth:'+currentWidth);
                 if(cw != currentWidth){
                     cm.setColumnWidth(ci, cw, true);
                     if(preventUpdate !== true){
+                    	//alert('this.updateColumnWidth(ci,cw)=('+ci+', '+cw+')');
                         this.updateColumnWidth(ci, cw);
                     }
                 }
@@ -29876,7 +29881,7 @@ Ext.extend(Ext.grid.GridView, Ext.util.Observable, {
         if(!this.grid.monitorWindowResize || this.grid.autoHeight){
             return;
         }
-        alert('GV, onWindowResize(), layout()');
+        //alert('GV, onWindowResize(), layout()');
         this.layout();
     },
 
