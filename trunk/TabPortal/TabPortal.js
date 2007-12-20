@@ -1,12 +1,13 @@
 
-// setting handlers
+// setting handler
 	var tools = [{
         id:'gear',
         handler: function(){
             Ext.Msg.alert('Message', 'Portlet Settings was clicked.');
         }
     }];
-    
+
+
     var tab_tools = [{
         id:'gear',
         handler: function(){
